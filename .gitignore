@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+.env
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*.swn
+*.swm
+
+# macOS
+.DS_Store
+
+# Dependency directories
+venv/
+env/
+ENV/
+
+# Logs
+*.log
+
+# Environment variables file
+.env
+
+# Byte-compiled files for Python 3
+__pycache__/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
