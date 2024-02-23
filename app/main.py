@@ -4,6 +4,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
+import requests
 
 app = FastAPI()
 
@@ -13,7 +14,17 @@ def read_root():
 
 @app.get("/foo/")
 def read_pkl(sepalLength: float, sepalWidth: float, petalLength: float, petalWidth: float):
-    model = joblib.load('app/tree_iris_test.pkl')
+    url = 'https://uai-nico.s3.amazonaws.com/tree_iris_test.pkl'
+    save_path = 'model/tree_iris_test.pkl'
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(save_path, 'wb') as f:
+            f.write(response.content)
+        print("File downloaded successfully")
+    else:
+        print("Failed to download file. Status code:", response.status_code)
+
+    model = joblib.load('model/tree_iris_test.pkl')
     arguments = np.array([[sepalLength, sepalWidth, petalLength, petalWidth]])
     result = model.predict(arguments)
     return {"result": result[0]}
