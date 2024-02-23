@@ -20,13 +20,16 @@ def read_pkl(sepalLength: float, sepalWidth: float, petalLength: float, petalWid
     if response.status_code == 200:
         with open(save_path, 'wb') as f:
             f.write(response.content)
+        
+        model = joblib.load('model/tree_iris_test.pkl')
+        arguments = np.array([[sepalLength, sepalWidth, petalLength, petalWidth]])
+        result = model.predict(arguments)
+        
         print("File downloaded successfully")
     else:
         print("Failed to download file. Status code:", response.status_code)
 
-    model = joblib.load('model/tree_iris_test.pkl')
-    arguments = np.array([[sepalLength, sepalWidth, petalLength, petalWidth]])
-    result = model.predict(arguments)
+    
     return {"result": result[0]}
 
 @app.get("/items/{item_id}")
