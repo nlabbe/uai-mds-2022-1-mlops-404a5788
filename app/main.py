@@ -12,7 +12,7 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/foo/")
+@app.get("/predict/")
 def read_pkl(sepalLength: float, sepalWidth: float, petalLength: float, petalWidth: float):
 
     url = 'https://uai-nico.s3.amazonaws.com/tree_iris_test.pkl'
