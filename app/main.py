@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello Ahmad y Diego!"}
 
 @app.get("/predict/")
 def read_pkl(sepalLength: float, sepalWidth: float, petalLength: float, petalWidth: float):
@@ -41,7 +41,3 @@ def read_pkl(sepalLength: float, sepalWidth: float, petalLength: float, petalWid
         print("An error occurred while loading the model:", e)
     
     return {"result": result[0]}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
