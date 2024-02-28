@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello Ahmad y Diego!"}
+    return "Hello Ahmad y Diego!"
 
 @app.get("/predict/")
 def read_pkl(sepalLength: float, sepalWidth: float, petalLength: float, petalWidth: float):
